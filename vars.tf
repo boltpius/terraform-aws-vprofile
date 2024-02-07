@@ -63,7 +63,7 @@ variable instance_count {
 
 variable vpc_name {
   type        = string
-  default     = "1"
+  default     = "vprofile-vpc"
 }
 
 variable "avaiablity_zone1" {
@@ -82,7 +82,7 @@ variable "avaiablity_zone3" {
   type    = string
   default = "eu-west-1c"
 }
-
+#
 
 variable vpc_cidr {
   type    = string
