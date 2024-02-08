@@ -91,32 +91,32 @@ variable vpc_cidr {
 
 variable pub1_cidr {
   type    = string
-  default = "172.21.1.0/16"
+  default = "172.21.1.0/24"
 }
 
 variable pub2_cidr {
   type    = string
-  default = "172.21.2.0/16"
+  default = "172.21.2.0/24"
 }
 
 variable pub3_cidr {
   type    = string
-  default = "172.21.3.0/16"
+  default = "172.21.3.0/24"
 }
 
 variable priv1_cidr {
   type    = string
-  default = "172.21.4.0/16"
+  default = "172.21.4.0/24"
 }
 
 variable priv2_cidr {
   type    = string
-  default = "172.21.5.0/16"
+  default = "172.21.5.0/24"
 }
 
 variable priv3_cidr {
   type    = string
-  default = "172.21.6.0/16"
+  default = "172.21.6.0/24"
 }
 
 
