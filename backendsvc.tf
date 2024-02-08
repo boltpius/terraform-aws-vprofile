@@ -48,11 +48,11 @@ resource "aws_mq_broker" "vprofile_rmq" {
   engine_version     = "3.11.20"
   host_instance_type = "mq.t3.micro"
 
- # deployment_mode          = "ACTIVE_STANDBY_MULTI_AZ"  # Set the deployment mode to ACTIVE_STANDBY_MULTI_AZ
-  publicly_accessible      = false  # Set to true if you want the broker to be publicly accessible
+  # deployment_mode          = "ACTIVE_STANDBY_MULTI_AZ"  # Set the deployment mode to ACTIVE_STANDBY_MULTI_AZ
+  publicly_accessible = false # Set to true if you want the broker to be publicly accessible
 
-  security_groups    = [aws_security_group.vprofile_backend_sg.id]
-  subnet_ids         = [module.vpc.private_subnets[0]]
+  security_groups = [aws_security_group.vprofile_backend_sg.id]
+  subnet_ids      = [module.vpc.private_subnets[0]]
 
   user {
     username = var.rmquser

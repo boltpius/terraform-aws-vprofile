@@ -2,7 +2,7 @@ resource "aws_elastic_beanstalk_environment" "vprofile-bean-prod" {
   name                = "vprofile-bean-prod-pius"
   application         = aws_elastic_beanstalk_application.vprofile-prod.name
   solution_stack_name = "64bit Amazon Linux 2 v4.4.0 running Tomcat 9 Corretto 8" #   Tomcat 8.5 with Corretto 11 running on 64bit Amazon Linux 2
-  cname_prefix        = "vprofile-bean-prod-pius" # unique name to give your bean stalk. 
+  cname_prefix        = "vprofile-bean-prod-pius"                                 # unique name to give your bean stalk. 
   setting {
     namespace = "aws:ec2:vpc"
     name      = "VPCId"
@@ -24,13 +24,13 @@ resource "aws_elastic_beanstalk_environment" "vprofile-bean-prod" {
   setting {
     namespace = "aws:ec2:vpc"
     name      = "Subnets"
-    value     = join(",", [module.vpc.private_subnets[0],module.vpc.private_subnets[1],module.vpc.private_subnets[2]]) #value need here is a string and not a list which is why the join() function is being used to convert the list strings. 
+    value     = join(",", [module.vpc.private_subnets[0], module.vpc.private_subnets[1], module.vpc.private_subnets[2]]) #value need here is a string and not a list which is why the join() function is being used to convert the list strings. 
   }
 
   setting {
     namespace = "aws:ec2:vpc"
     name      = "ELBSubnets"
-    value     = join(",", [module.vpc.public_subnets[0],module.vpc.public_subnets[1],module.vpc.public_subnets[2]])
+    value     = join(",", [module.vpc.public_subnets[0], module.vpc.public_subnets[1], module.vpc.public_subnets[2]])
   }
 
   setting {
@@ -105,7 +105,7 @@ resource "aws_elastic_beanstalk_environment" "vprofile-bean-prod" {
     value     = "true"
   }
 
- 
+
   setting {
     namespace = "aws:elasticbeanstalk:environment:process:default"
     name      = "StickinessEnabled"
@@ -142,6 +142,6 @@ resource "aws_elastic_beanstalk_environment" "vprofile-bean-prod" {
     value     = aws_security_group.vprofile_lb_sg.id
   }
 
-  depends_on = [aws_security_group.vprofile_lb_sg, aws_security_group.vprofile_prod_sg]
+  depends_on = [aws_security_group.vprofile_lb_sg, aws_security_group.vprofile_prod_sg] #we want the security groups for LB and prod Instances to be created first before setting up this ebs which will use the SGs created.
 
 }
